@@ -1,0 +1,44 @@
+clear; clc; close all;
+fdir = fullfile(pwd,'data','coupons_new.csv');
+df = readtable(fdir,"VariableNamingRule","preserve");
+
+vname = df.Properties.VariableNames;
+df.Properties.VariableNames{strcmpi(vname,"Var1")} = 'index';
+df.expire_1d = strcmpi(df.expire_1d,"True");
+df.is_male = strcmpi(df.is_male,"True");
+
+% index
+df0 = df(strcmpi(df.coupon,"Bar"),:);
+df0 = df(strcmpi(df.coupon,"Carry out & Take away"),:);
+df0 = df(strcmpi(df.coupon,"Coffee House"),:);
+idx_cheap = df(strcmpi(df.coupon,"Restaurant(20-50)"),:);
+idx_expensive = df(strcmpi(df.coupon,"Restaurant(<20)"),:);
+
+
+
+%occupation
+% 'Architecture & Engineering'
+% 'Arts Design Entertainment Sports & Media'
+% 'Building & Grounds Cleaning & Maintenance'
+% 'Business & Financial'
+% 'Community & Social Services'
+% 'Computer & Mathematical'
+% 'Construction & Extraction'
+% 'Education&Training&Library'
+% 'Farming Fishing & Forestry'
+% 'Food Preparation & Serving Related'
+% 'Healthcare Practitioners & Technical'
+% 'Healthcare Support'
+% 'Installation Maintenance & Repair'
+% 'Legal'
+% 'Life Physical Social Science'
+% 'Management'
+% 'Office & Administrative Support'
+% 'Personal Care & Service'
+% 'Production Occupations'
+% 'Protective Service'
+% 'Retired'
+% 'Sales & Related'
+% 'Student'
+% 'Transportation & Material Moving'
+% 'Unemployed'
